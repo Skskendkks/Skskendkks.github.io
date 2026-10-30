@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="16 116 480 272" width="48" height="27" aria-label="Bill Yeung Logo">
+  <!-- Left Bracket < -->
+  <path d="M 88 196 L 40 256 L 88 316" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="square" stroke-linejoin="miter" />
+
+  <!-- Letter B (Stylized geometric monogram) -->
+  <path d="M 134 222 V 140 H 212 C 248 140 272 160 272 192 C 272 224 248 244 212 244 H 164 L 134 268 V 364 H 216 C 254 364 280 342 280 304 C 280 266 254 244 212 244" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="square" stroke-linejoin="miter" />
+
+  <!-- Letter Y -->
+  <path d="M 274 140 L 346 254 L 418 140 M 346 254 V 364" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="square" stroke-linejoin="miter" />
+
+  <!-- Right Bracket > -->
+  <path d="M 424 196 L 472 256 L 424 316" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="square" stroke-linejoin="miter" />
+
+  <!-- Bill Yeung Signature Text -->
+  <text x="364" y="364" font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="currentColor" opacity="0.75">Bill Yeung</text>
+</svg>
