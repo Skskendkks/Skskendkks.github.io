@@ -1,0 +1,14 @@
+import { profile, skills, knowledge, projects } from './data.js';
+const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const e = escapeHTML;
+if (profile.displayName) document.querySelector('#greeting').textContent = `Hi, I'm ${profile.displayName}.`;
+document.querySelector('#skills-list').innerHTML = skills.map(([title, items]) => `<div class="skill-row"><h3>${e(title)}</h3><p>${e(items)}</p></div>`).join('');
+document.querySelector('#knowledge-list').innerHTML = knowledge.map(item => `<article class="knowledge-card"><h3>${e(item.title)}</h3><p>${e(item.subtitle)}</p><small>${e(item.note)}</small><details><summary>Explore topics</summary>${item.groups.map(([name, text]) => `<div class="topic"><h4>${e(name)}</h4><p>${e(text)}</p></div>`).join('')}</details></article>`).join('');
+const card = p => `<article class="project-card ${p.featured ? '' : 'compact'}"><div class="project-top"><span>${e(p.projectType)}</span><span aria-hidden="true">${p.featured ? '0' + (projects.filter(x => x.featured).indexOf(p)+1) : '↗'}</span></div>${p.screenshot ? `<img src="${e(p.screenshot)}" alt="${e(p.title)} screenshot" loading="lazy">` : ''}<div class="project-content"><h3>${e(p.title)}</h3><p>${e(p.shortDescription)}</p><div class="tags">${p.technologies.map(t => `<span>${e(t)}</span>`).join('')}</div>${p.myContribution ? `<p>${e(p.myContribution)}</p>` : ''}<a class="text-link" href="${e(p.githubUrl)}">View on GitHub ↗</a>${p.demoUrl ? ` <a class="text-link" href="${e(p.demoUrl)}">Live demo ↗</a>` : ''}</div></article>`;
+document.querySelector('#projects-list').innerHTML = projects.filter(p => p.featured).map(card).join('');
+document.querySelector('#more-projects').innerHTML = projects.filter(p => !p.featured).map(card).join('');
+document.querySelector('#contact-links').innerHTML = [['GitHub',profile.github],['Email',profile.email && `mailto:${profile.email}`],['LinkedIn',profile.linkedin],['Resume',profile.resume]].filter(([, url]) => url).map(([label,url]) => `<a class="text-link" href="${e(url)}">${e(label)} ↗</a>`).join('');
+document.querySelector('#year').textContent = new Date().getFullYear();
+const button = document.querySelector('.menu'); const nav = document.querySelector('#nav-links');
+button.addEventListener('click', () => { const open = button.getAttribute('aria-expanded') === 'true'; button.setAttribute('aria-expanded', String(!open)); nav.classList.toggle('open', !open); });
+nav.addEventListener('click', event => { if (event.target.closest('a')) { button.setAttribute('aria-expanded','false'); nav.classList.remove('open'); } });
